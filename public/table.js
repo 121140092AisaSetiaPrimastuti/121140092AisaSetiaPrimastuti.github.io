@@ -27,7 +27,7 @@ async function fetchProducts() {
                 }
             });
 
-            localStorage.setItem('products', JSON.stringify(products));
+            localStorage.setItem('products', JSON.stringify(productsFiltered));
         } catch (error) {
             console.error('Error fetching data:', error);
         }

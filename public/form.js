@@ -1,11 +1,10 @@
-// Mendapatkan elemen form
+
 const productForm = document.getElementById('productForm');
 
-// Event listener untuk form submission
-productForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // Mencegah halaman mengirimkan permintaan (refresh)
 
-    // Mengambil data dari form
+productForm.addEventListener('submit', function (e) {
+    e.preventDefault(); 
+
     const id = document.getElementById('id').value;
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
@@ -17,7 +16,6 @@ productForm.addEventListener('submit', function (e) {
     const category = document.getElementById('category').value;
     const thumbnail = document.getElementById('thumbnail').value;
 
-    // Membuat objek produk dari data form
     const product = {
         id,
         title,
@@ -31,12 +29,11 @@ productForm.addEventListener('submit', function (e) {
         thumbnail
     };
 
-    // Menyimpan produk ke local storage
+
     const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
     existingProducts.push(product);
     localStorage.setItem('products', JSON.stringify(existingProducts));
-    // Reset form
     productForm.reset();
 
-    // Anda bisa memberikan feedback kepada pengguna bahwa data telah berhasil disimpan, misalnya dengan menampilkan pesan.
+    
 });
