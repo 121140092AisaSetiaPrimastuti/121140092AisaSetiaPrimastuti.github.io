@@ -1,37 +1,31 @@
-
-const productForm = document.getElementById('productForm');
-
-
-productForm.addEventListener('submit', function (e) {
-    e.preventDefault(); 
-
-    const id = document.getElementById('id').value;
+function postDataToLocalStorage() {
     const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
-    const discountPercentage = document.getElementById('discountPercentage').value;
+    const director = document.getElementById('director').value;
+    const releaseYear = document.getElementById('releaseYear').value;
+    const genre = document.getElementById('genre').value;
     const rating = document.getElementById('rating').value;
-    const stock = document.getElementById('stock').value;
-    const brand = document.getElementById('brand').value;
-    const category = document.getElementById('category').value;
+    const duration = document.getElementById('duration').value;
+    const language = document.getElementById('language').value;
+    const country = document.getElementById('country').value;
+    const actors = document.getElementById('actors').value;
 
-    const product = {
-        id,
+    const film = {
         title,
-        description,
-        price,
-        discountPercentage,
+        director,
+        releaseYear,
+        genre,
         rating,
-        stock,
-        brand,
-        category
+        duration,
+        language,
+        country,
+        actors: actors.split(',').map(actor => actor.trim())
     };
+    let films = JSON.parse(localStorage.getItem('films')) || [];
+    films.push(film);
+    localStorage.setItem('films', JSON.stringify(films));
+    alert('Data film telah berhasil disimpan ke Tabel.');
+    document.getElementById('filmForm').reset();
+}
 
-
-    const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-    existingProducts.push(product);
-    localStorage.setItem('products', JSON.stringify(existingProducts));
-    productForm.reset();
-
-    
-});
+const submitButton = document.querySelector('button[type="submit"]');
+submitButton.addEventListener('click', postDataToLocalStorage);
