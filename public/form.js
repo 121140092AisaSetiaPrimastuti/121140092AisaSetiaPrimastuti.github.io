@@ -14,7 +14,6 @@ productForm.addEventListener('submit', function (e) {
     const stock = document.getElementById('stock').value;
     const brand = document.getElementById('brand').value;
     const category = document.getElementById('category').value;
-    const thumbnail = document.getElementById('thumbnail').value;
 
     const product = {
         id,
@@ -25,8 +24,7 @@ productForm.addEventListener('submit', function (e) {
         rating,
         stock,
         brand,
-        category,
-        thumbnail
+        category
     };
 
 
